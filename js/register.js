@@ -13,7 +13,7 @@ var isValid = true;
 var usernameInput = document.getElementById("username");
 var emailInput = document.getElementById("email");
 var passwordInput = document.getElementById("password");
-var roleInput = document.getElementById("role");
+// var roleInput = document.getElementById("role");
 
 //  function to update status
 function updateStatus(inputEl, errorEl, isValid, errorMsg) {
@@ -64,11 +64,12 @@ registerForm.addEventListener("submit", function (event) {
   var isPassValid = PasswordValidation(passwordInput.value);
 
   if (isUserValid && isEmailValid && isPassValid) {
+    // console.log("role in register", roleInput.value);
     const userData = {
       username: usernameInput.value,
       email: emailInput.value,
       password: passwordInput.value,
-      role: roleInput.value,
+      // role: roleInput.value,
     };
 
     localStorage.setItem(usernameInput.value, JSON.stringify(userData));
