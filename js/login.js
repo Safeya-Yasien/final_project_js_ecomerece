@@ -7,8 +7,8 @@ var passwordTxt = document.getElementById("password");
 // console.log(emailTxt);
 
 var data = JSON.parse(localStorage.getItem("userData"));
-console.log(data.email);
-console.log(data.password);
+// console.log(data.email);
+// console.log(data.password);
 
 //  Get error display elements
 var passwordError = document.getElementById("passwordError");
@@ -126,3 +126,6 @@ function updateStatus(inputEl, errorEl, isValid, errorMsg) {
     inputEl.style.borderColor = "red";
   }
 }
+
+// print data for testing
+console.log("Registered User Data:", data.Email, data.password);

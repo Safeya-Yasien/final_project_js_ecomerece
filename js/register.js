@@ -39,10 +39,28 @@ username.addEventListener("input", function () {
 
 // Dynamic Email
 emailInput.addEventListener("input", function () {
-  const isValid = ValidateEmail(this.value);
-  updateStatus(this, emailError, isValid, "Enter a valid @gmail.com address.");
+  const isValidFormat = ValidateEmail(this.value);
+  const isExisting = checkExistEmail(this.value);
+
+  if (emailInput.value === "") {
+    updateStatus(this, emailError, false, "");
+  } else if (!isValidFormat) {
+    updateStatus(this, emailError, false, "Enter a valid @gmail.com address.");
+  } else if (isExisting) {
+    updateStatus(this, emailError, false, "Email already exists.");
+  } else {
+    updateStatus(this, emailError, true, "Valid");
+  }
 });
 
+// Check Existing Email
+function checkExistEmail(email) {
+  let user = JSON.parse(localStorage.getItem("userData")) || [];
+  if (user && user.email === email) {
+    return true;
+  }
+  return false;
+}
 // Dynamic Password
 password.addEventListener("input", function () {
   const isValid = PasswordValidation(this.value);
@@ -63,7 +81,12 @@ registerForm.addEventListener("submit", function (event) {
   var isEmailValid = ValidateEmail(emailInput.value);
   var isPassValid = PasswordValidation(passwordInput.value);
 
-  if (isUserValid && isEmailValid && isPassValid) {
+  if (
+    isUserValid &&
+    isEmailValid &&
+    isPassValid &&
+    !checkExistEmail(emailInput.value)
+  ) {
     // console.log("role in register", roleInput.value);
     const userData = {
       username: usernameInput.value,
@@ -71,7 +94,6 @@ registerForm.addEventListener("submit", function (event) {
       password: passwordInput.value,
       // role: roleInput.value,
     };
-
     localStorage.setItem("userData", JSON.stringify(userData));
     window.location.href = "login.html";
   }
