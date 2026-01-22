@@ -5,9 +5,9 @@ var loginForm = document.getElementById("loginForm");
 var emailTxt = document.getElementById("email");
 var passwordTxt = document.getElementById("password");
 // console.log(emailTxt);
-var data = JSON.parse(localStorage.getItem("userData"));
-// console.log(data.email);
-// console.log(data.password);
+var data = JSON.parse(localStorage.getItem("users"));
+console.log(data[0].email);
+console.log(data[0].password);
 
 //  Get error display elements
 var passwordError = document.getElementById("passwordError");
@@ -65,7 +65,11 @@ function checkRegularUser() {
   var validatedPassword = PasswordValidation(passwordTxt.value);
   // Your code to check regular user login
   if (validatedEmail && validatedPassword) {
-    if (data.email === emailTxt.value && data.password === passwordTxt.value) {
+    var foundUser = data.find(
+      (user) =>
+        user.email === emailTxt.value && user.password === passwordTxt.value,
+    );
+    if (foundUser) {
       localStorage.setItem("isLoggedIn", "true");
       window.location.href = "user.html";
     } else {
@@ -120,7 +124,7 @@ function PasswordValidation(password) {
 function updateStatus(inputEl, errorEl, isValid, errorMsg) {
   if (inputEl.value === "") {
     errorEl.innerHTML = "this field is required";
-    inputEl.style.borderColor = "#ddd";
+    inputEl.style.borderColor = "red";
     errorEl.style.color = "red";
   } else if (isValid) {
     errorEl.innerHTML = "Valid";
