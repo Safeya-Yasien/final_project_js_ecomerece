@@ -69,10 +69,22 @@ ul {
 }
 
 .sidebar .logout {
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+
   margin-top: auto;
   background-color: #7f1d1d;
   color: #fff;
   text-align: center;
+}
+.logout-btn {
+  border: none;
+  background-color: inherit;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .sidebar .logout:hover {

@@ -16,6 +16,7 @@ function displayOrdersLength() {
   const orders = JSON.parse(localStorage.getItem("orders")) || [];
   ordersCount.innerHTML = orders.length;
 }
+
 displayProductsLength();
 displayCategoriesLength();
 displayOrdersLength();

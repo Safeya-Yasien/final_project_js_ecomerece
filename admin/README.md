@@ -48,7 +48,9 @@
 - delete order
 - confirm delete order
 - handle after login
-- handle logout
-- logout confirm message
-
+- make routes protected if user is not logged in
 <!-- what is event bubling -->
+
+#### Live server
+
+live-server --host=127.0.0.1 --port=5500
