@@ -5,7 +5,6 @@ var loginForm = document.getElementById("loginForm");
 var emailTxt = document.getElementById("email");
 var passwordTxt = document.getElementById("password");
 // console.log(emailTxt);
-
 var data = JSON.parse(localStorage.getItem("userData"));
 // console.log(data.email);
 // console.log(data.password);
