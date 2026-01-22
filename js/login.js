@@ -23,10 +23,7 @@ loginForm.addEventListener("submit", function (e) {
   // Check if the user is an admin
   if (validatedEmail && validatedPassword) {
     var xhr = new XMLHttpRequest();
-    xhr.open(
-      "GET",
-      "http://127.0.0.1:5500/final_project_js_ecomerece/js/adminData.json",
-    );
+    xhr.open("GET", "http://127.0.0.1:5500/js/adminData.json");
     xhr.onload = function () {
       if (xhr.status == 200) {
         var data = JSON.parse(xhr.responseText);
@@ -50,9 +47,7 @@ loginForm.addEventListener("submit", function (e) {
           };
           localStorage.setItem("isLoggedIn", "true");
           localStorage.setItem("user", `${JSON.stringify(data)}`);
-          location.assign(
-            "http://127.0.0.1:5500/final_project_js_ecomerece/admin/index.html",
-          );
+          location.assign("http://127.0.0.1:5500/admin/index.html");
         }
       }
     };
@@ -98,26 +93,36 @@ function PasswordValidation(password) {
 }
 
 // Dynamic Email
-emailTxt.addEventListener("input", function () {
-  const isValid = ValidateEmail(this.value);
-  updateStatus(this, emailError, isValid, "Enter a valid @gmail.com address.");
+["input", "blur"].forEach((event) => {
+  emailTxt.addEventListener(event, function () {
+    const isValid = ValidateEmail(this.value);
+    updateStatus(
+      this,
+      emailError,
+      isValid,
+      "Enter a valid @gmail.com address.",
+    );
+  });
 });
 
 // Dynamic Password
-passwordTxt.addEventListener("input", function () {
-  const isValid = PasswordValidation(this.value);
-  updateStatus(
-    this,
-    passwordError,
-    isValid,
-    "8-15 chars, Uppercase, Lowercase, Digit, & Special Char.",
-  );
+["input", "blur"].forEach((event) => {
+  passwordTxt.addEventListener(event, function () {
+    const isValid = PasswordValidation(this.value);
+    updateStatus(
+      this,
+      passwordError,
+      isValid,
+      "8-15 chars, Uppercase, Lowercase, Digit, & Special Char.",
+    );
+  });
 });
 
 function updateStatus(inputEl, errorEl, isValid, errorMsg) {
   if (inputEl.value === "") {
-    errorEl.innerHTML = "";
+    errorEl.innerHTML = "this field is required";
     inputEl.style.borderColor = "#ddd";
+    errorEl.style.color = "red";
   } else if (isValid) {
     errorEl.innerHTML = "Valid";
     errorEl.style.color = "green";
@@ -128,6 +133,3 @@ function updateStatus(inputEl, errorEl, isValid, errorMsg) {
     inputEl.style.borderColor = "red";
   }
 }
-
-// print data for testing
-// console.log("Registered User Data:", data.Email, data.password);
