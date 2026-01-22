@@ -6,10 +6,20 @@ const addProductForm = document.getElementById("add-product-form");
 const toast = document.querySelector(".toast");
 const toastContent = document.querySelector(".toast-content");
 const deleteAllBtn = document.querySelector(".delete-all");
+const addProductFormTitle = document.querySelector(".add-product-form-title");
+
+const productName = document.getElementById("name");
+const productPrice = document.getElementById("price");
+const productStock = document.getElementById("stock");
+const productCategory = document.getElementById("category");
+const productDescription = document.getElementById("description");
+let mode = "add";
+let updatedProductId;
 
 addBtn.addEventListener("click", () => {
   addProductForm.classList.remove("hidden");
   productsView.classList.add("hidden");
+  addProductFormTitle.innerHTML = "Add Product";
 });
 
 cancelBtn.addEventListener("click", () => {
@@ -20,30 +30,28 @@ cancelBtn.addEventListener("click", () => {
 
 addProductForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  addProduct();
+  if (mode === "add") {
+    addProduct();
+  } else {
+    updateProduct();
+  }
 });
 
 function addProduct() {
-  const productName = document.getElementById("name").value;
-  const productPrice = document.getElementById("price").value;
-  const productStock = document.getElementById("stock").value;
-  const productCategory = document.getElementById("category").value;
-  const productDescription = document.getElementById("description").value;
-
   if (
-    productName.trim() &&
-    productPrice.trim() &&
-    productStock.trim() &&
-    productCategory.trim() &&
-    productDescription.trim()
+    productName.value.trim() &&
+    productPrice.value.trim() &&
+    productStock.value.trim() &&
+    productCategory.value.trim() &&
+    productDescription.value.trim()
   ) {
     let products = JSON.parse(localStorage.getItem("products")) || [];
     products.push({
       id: products.length + 1,
-      name: productName,
-      price: productPrice,
-      stock: productStock,
-      category: productCategory,
+      name: productName.value,
+      price: productPrice.value,
+      stock: productStock.value,
+      category: productCategory.value,
       description: productDescription,
     });
 
@@ -74,7 +82,7 @@ function displayProducts() {
     <td>${product.category}</td>
     <td class="description">${product.description}</td>
     <td>
-      <button class="btn btn-primary" >Edit</button>
+      <button class="btn btn-primary" onclick="editProduct(${product.id})">Edit</button>
       <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
     </td>
   `;
@@ -85,9 +93,14 @@ function displayProducts() {
 function deleteProduct(id) {
   const products = JSON.parse(localStorage.getItem("products")) || [];
   const productIndex = products.findIndex((product) => product.id === id);
-  products.splice(productIndex, 1);
-  localStorage.setItem("products", JSON.stringify(products));
-  displayProducts();
+  const confirmMessage = confirm(
+    "Are you sure you want to delete this product?",
+  );
+  if (confirmMessage) {
+    products.splice(productIndex, 1);
+    localStorage.setItem("products", JSON.stringify(products));
+    displayProducts();
+  }
 }
 
 deleteAllBtn.addEventListener("click", () => {
@@ -96,9 +109,53 @@ deleteAllBtn.addEventListener("click", () => {
 });
 
 function editProduct(id) {
+  mode = "edit";
   const products = JSON.parse(localStorage.getItem("products")) || [];
   const productIndex = products.findIndex((product) => product.id === id);
-  console.log("productIndex", productIndex);
+
+  addProductForm.classList.remove("hidden");
+  productsView.classList.add("hidden");
+
+  addProductFormTitle.innerHTML = "Edit Product";
+
+  const product = products[productIndex];
+
+  productName.value = product.name;
+  productPrice.value = product.price;
+  productStock.value = product.stock;
+  productCategory.value = product.category;
+  productDescription.value = product.description;
+
+  updatedProductId = product.id;
+}
+
+function updateProduct() {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+
+  if (
+    productName.value.trim() &&
+    productPrice.value.trim() &&
+    productStock.value.trim() &&
+    productCategory.value.trim() &&
+    productDescription.value.trim()
+  ) {
+    products[updatedProductId - 1] = {
+      id: updatedProductId,
+      name: productName.value,
+      price: productPrice.value,
+      stock: productStock.value,
+      category: productCategory.value,
+      description: productDescription.value,
+    };
+
+    localStorage.setItem("products", JSON.stringify(products));
+    toastContent.innerHTML = "Product updated successfully";
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+    addProductForm.reset();
+  }
 }
 
 displayProducts();

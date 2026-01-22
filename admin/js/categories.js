@@ -6,6 +6,14 @@ const addCategoryForm = document.getElementById("add-category-form");
 const toast = document.querySelector(".toast");
 const toastContent = document.querySelector(".toast-content");
 const deleteAllBtn = document.querySelector(".delete-all");
+const addCategoryFormTitle = document.querySelector(".add-category-form-title");
+
+const categoryName = document.getElementById("name");
+const categoryStatus = document.getElementById("status");
+const categoryDescription = document.getElementById("description");
+
+let mode = "add";
+let updatedCategoryId;
 
 addBtn.addEventListener("click", () => {
   addCategoryForm.classList.remove("hidden");
@@ -20,25 +28,25 @@ cancelBtn.addEventListener("click", () => {
 
 addCategoryForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  addCategory();
+  if (mode === "add") {
+    addCategory();
+  } else {
+    updateCategory();
+  }
 });
 
 function addCategory() {
-  const categoryName = document.getElementById("name").value;
-  const categoryStatus = document.getElementById("status").value;
-  const categoryDescription = document.getElementById("description").value;
-
   if (
-    categoryName.trim() &&
-    categoryDescription.trim() &&
-    categoryStatus.trim()
+    categoryName.value.trim() &&
+    categoryDescription.value.trim() &&
+    categoryStatus.value.trim()
   ) {
     let categories = JSON.parse(localStorage.getItem("categories")) || [];
     categories.push({
       id: categories.length + 1,
-      name: categoryName,
-      status: categoryStatus,
-      description: categoryDescription,
+      name: categoryName.value,
+      status: categoryStatus.value,
+      description: categoryDescription.value,
     });
 
     localStorage.setItem("categories", JSON.stringify(categories));
@@ -66,7 +74,7 @@ function displayCategories() {
     <td>${category.status}</td>
     <td class="description">${category.description}</td>
     <td>
-      <button class="btn btn-primary" >Edit</button>
+      <button class="btn btn-primary" onclick="editCategory(${category.id})">Edit</button>
       <button class="btn btn-danger" onclick="deleteCategory(${category.id})">Delete</button>
     </td>
   `;
@@ -77,9 +85,15 @@ function displayCategories() {
 function deleteCategory(id) {
   const categories = JSON.parse(localStorage.getItem("categories")) || [];
   const categoryIndex = categories.findIndex((category) => category.id === id);
-  categories.splice(categoryIndex, 1);
-  localStorage.setItem("categories", JSON.stringify(categories));
-  displayCategories();
+
+  const confirmMessage = confirm(
+    "Are you sure you want to delete this category?",
+  );
+  if (confirmMessage) {
+    categories.splice(categoryIndex, 1);
+    localStorage.setItem("categories", JSON.stringify(categories));
+    displayCategories();
+  }
 }
 
 deleteAllBtn.addEventListener("click", () => {
@@ -88,9 +102,47 @@ deleteAllBtn.addEventListener("click", () => {
 });
 
 function editCategory(id) {
+  mode = "edit";
   const categories = JSON.parse(localStorage.getItem("categories")) || [];
   const categoryIndex = categories.findIndex((category) => category.id === id);
-  console.log("categoryIndex", categoryIndex);
+
+  addCategoryForm.classList.remove("hidden");
+  categoriesView.classList.add("hidden");
+
+  addCategoryFormTitle.innerHTML = "Edit Category";
+
+  const category = categories[categoryIndex];
+
+  categoryName.value = category.name;
+  categoryDescription.value = category.description;
+  categoryStatus.value = category.status;
+
+  updatedCategoryId = category.id;
+}
+
+function updateCategory() {
+  const categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+  if (
+    categoryName.value.trim() &&
+    categoryDescription.value.trim() &&
+    categoryStatus.value.trim()
+  ) {
+    categories[updatedCategoryId - 1] = {
+      id: updatedCategoryId,
+      name: categoryName.value,
+      description: categoryDescription.value,
+      status: categoryStatus.value,
+    };
+
+    localStorage.setItem("categories", JSON.stringify(categories));
+    toastContent.innerHTML = "Category updated successfully";
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 3000);
+    addCategoryForm.reset();
+  }
 }
 
 displayCategories();
