@@ -18,7 +18,7 @@ var passwordInput = document.getElementById("password");
 function updateStatus(inputEl, errorEl, isValid, errorMsg) {
   if (inputEl.value === "") {
     errorEl.innerHTML = "This field is required";
-    inputEl.style.borderColor = "#ddd";
+    inputEl.style.borderColor = "red";
     errorEl.style.color = "red";
   } else if (isValid) {
     errorEl.innerHTML = "Valid";
@@ -109,7 +109,12 @@ registerForm.addEventListener("submit", function (event) {
       email: emailInput.value,
       password: passwordInput.value,
     };
-    localStorage.setItem("userData", JSON.stringify(userData));
+    // Get existing users array or create new one
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Add new user to array
+    users.push(userData);
+    localStorage.setItem("users", JSON.stringify(users));
     window.location.href = "login.html";
   }
 });
