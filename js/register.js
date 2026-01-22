@@ -13,13 +13,13 @@ var isValid = true;
 var usernameInput = document.getElementById("username");
 var emailInput = document.getElementById("email");
 var passwordInput = document.getElementById("password");
-// var roleInput = document.getElementById("role");
 
 //  function to update status
 function updateStatus(inputEl, errorEl, isValid, errorMsg) {
   if (inputEl.value === "") {
-    errorEl.innerHTML = "";
+    errorEl.innerHTML = "This field is required";
     inputEl.style.borderColor = "#ddd";
+    errorEl.style.color = "red";
   } else if (isValid) {
     errorEl.innerHTML = "Valid";
     errorEl.style.color = "green";
@@ -32,25 +32,39 @@ function updateStatus(inputEl, errorEl, isValid, errorMsg) {
 }
 
 // Dynamic Username
-username.addEventListener("input", function () {
-  const isValid = validateUsername(this.value);
-  updateStatus(this, usernameError, isValid, "Use 3-15 letters/numbers only.");
+["input", "blur"].forEach((event) => {
+  usernameInput.addEventListener(event, function () {
+    const isValid = validateUsername(this.value);
+    updateStatus(
+      this,
+      usernameError,
+      isValid,
+      "Use 3-15 letters/numbers only.",
+    );
+  });
 });
 
 // Dynamic Email
-emailInput.addEventListener("input", function () {
-  const isValidFormat = ValidateEmail(this.value);
-  const isExisting = checkExistEmail(this.value);
+["input", "blur"].forEach((event) => {
+  emailInput.addEventListener(event, function () {
+    const isValidFormat = ValidateEmail(this.value);
+    const isExisting = checkExistEmail(this.value);
 
-  if (emailInput.value === "") {
-    updateStatus(this, emailError, false, "");
-  } else if (!isValidFormat) {
-    updateStatus(this, emailError, false, "Enter a valid @gmail.com address.");
-  } else if (isExisting) {
-    updateStatus(this, emailError, false, "Email already exists.");
-  } else {
-    updateStatus(this, emailError, true, "Valid");
-  }
+    if (emailInput.value === "") {
+      updateStatus(this, emailError, false, "");
+    } else if (!isValidFormat) {
+      updateStatus(
+        this,
+        emailError,
+        false,
+        "Enter a valid @gmail.com address.",
+      );
+    } else if (isExisting) {
+      updateStatus(this, emailError, false, "Email already exists.");
+    } else {
+      updateStatus(this, emailError, true, "Valid");
+    }
+  });
 });
 
 // Check Existing Email
@@ -62,14 +76,16 @@ function checkExistEmail(email) {
   return false;
 }
 // Dynamic Password
-password.addEventListener("input", function () {
-  const isValid = PasswordValidation(this.value);
-  updateStatus(
-    this,
-    passwordError,
-    isValid,
-    "8-15 chars, Uppercase, Lowercase, Digit, & Special Char.",
-  );
+["input", "blur"].forEach((event) => {
+  passwordInput.addEventListener(event, function () {
+    const isValid = PasswordValidation(this.value);
+    updateStatus(
+      this,
+      passwordError,
+      isValid,
+      "8-15 chars, Uppercase, Lowercase, Digit, & Special Char.",
+    );
+  });
 });
 
 // 3. Form Submission Event
@@ -92,7 +108,6 @@ registerForm.addEventListener("submit", function (event) {
       username: usernameInput.value,
       email: emailInput.value,
       password: passwordInput.value,
-      // role: roleInput.value,
     };
     localStorage.setItem("userData", JSON.stringify(userData));
     window.location.href = "login.html";
