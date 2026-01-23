@@ -87,9 +87,27 @@ Admin@123 <br/>
         - i add default image path start with "images/" folder then img name which i add in admin as image name and fixed extension of img to all 'webp'
         - there was a duplicate in wishlist.js i remove it and add new one for both add and remove wishlist called 'toggleWishlist'
         - i add two functions 'getProducts' and 'getCategories' to get products and categories from localStorage in 'main.js'
+        - add trim with toLowerCase to filter products by category to avoid case sensitive
+        - when add product to cart they add id of product again not update the quantity  in "addToCart" function
+        -
+
+
 
     "wishlist.js" file
         - display data from localStorage instead of array of products
         - i add default image path start with "images/" folder then img name which i add in admin as image name and fixed extension of img to all 'webp'
 
 ###### Tasneem
+
+    - cart.html
+    - cart.js
+    - display cart products
+
+    What i change?
+    "cart.js" file
+        - when remove data from localStorage define the key you want to remove not use 'clear'
+        - get data from localStorage instead of fakestore api
+        - use let and const instead of var
+        - fatama was save id of product in localStorage so i have to get product which id is equal to product id in cart
+        - add updateQty function to update quantity of product in cart.js file
+        - add styles
