@@ -166,3 +166,63 @@ function updateProduct() {
 }
 
 displayProducts();
+
+const defaultProducts = [
+  {
+    id: 1,
+    name: "Men T-Shirt",
+    price: 25,
+    stock: 50,
+    category: "Men",
+    description: "Comfortable cotton t-shirt",
+    image: "men-1",
+  },
+  {
+    id: 2,
+    name: "Men Jeans",
+    price: 45,
+    stock: 30,
+    category: "Men",
+    description: "Slim fit denim jeans",
+    image: "men-2",
+  },
+  {
+    id: 3,
+    name: "Women Dress",
+    price: 60,
+    stock: 20,
+    category: "Women",
+    description: "Elegant evening dress",
+    image: "women-1",
+  },
+  {
+    id: 4,
+    name: "Women Sneakers",
+    price: 80,
+    stock: 15,
+    category: "Women",
+    description: "Sporty and comfortable",
+    image: "women-2",
+  },
+  {
+    id: 5,
+    name: "Children Hoodie",
+    price: 30,
+    stock: 25,
+    category: "Children",
+    description: "Warm and cozy hoodie for children",
+    image: "children-1",
+  },
+  {
+    id: 6,
+    name: "Children Shorts",
+    price: 20,
+    stock: 40,
+    category: "Children",
+    description: "Cool summer shorts",
+    image: "children-2",
+  },
+];
+
+// Save to localStorage
+localStorage.setItem("products", JSON.stringify(defaultProducts));
