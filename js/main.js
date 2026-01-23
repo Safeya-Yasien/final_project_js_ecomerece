@@ -7,8 +7,10 @@ function getProducts() {
 
 function getCategories() {
   const products = getProducts();
-  console.log("products", products);
+  // why we use set to remove duplicates
+  // use ... to spread the array convert it to an array
   const categories = ["all", ...new Set(products.map((p) => p.category))];
+
   return categories;
 }
 
@@ -47,7 +49,9 @@ function filterProducts(category) {
   if (category === "all") {
     displayProducts(products);
   } else {
-    const filtered = products.filter((p) => p.category === category);
+    const filtered = products.filter(
+      (p) => p.category.trim().toLowerCase() === category.trim().toLowerCase(),
+    );
     displayProducts(filtered);
   }
 }
@@ -89,7 +93,14 @@ updateCounters();
 
 function addToCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push(productId);
+
+  const existingCartItem = cart.find((item) => item.id === productId);
+
+  if (existingCartItem) {
+    existingCartItem.quantity += 1;
+  } else {
+    cart.push({ id: productId, quantity: 1 });
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
 
   updateCounters();
