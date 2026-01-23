@@ -63,9 +63,33 @@ Ecomerece is a full-featured web application that allows users to browse product
 - Implement payment integration.
 - Enhance UI/UX design and responsive layout.
 
+## for admin
 
-## for admin 
 username <br/>
 Admin@gmail.com <br/>
 password <br/>
 Admin@123 <br/>
+
+###### Fatma Al-Zahraa
+
+    - index.html "home" page
+    - display all products
+    - add to cart
+    - add to wishlist
+    - display wishlist
+    - update counters
+    - filter products by category
+    - search products
+
+    What i change?
+    "main.js" file
+        - instead of array of products i use localStorage to get products which admin add
+        - i add default image path start with "images/" folder then img name which i add in admin as image name and fixed extension of img to all 'webp'
+        - there was a duplicate in wishlist.js i remove it and add new one for both add and remove wishlist called 'toggleWishlist'
+        - i add two functions 'getProducts' and 'getCategories' to get products and categories from localStorage in 'main.js'
+
+    "wishlist.js" file
+        - display data from localStorage instead of array of products
+        - i add default image path start with "images/" folder then img name which i add in admin as image name and fixed extension of img to all 'webp'
+
+###### Tasneem

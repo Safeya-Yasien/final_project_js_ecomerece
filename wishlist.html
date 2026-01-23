@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WishList</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <link
+      rel="icon"
+      href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAAAAMClwaDAAAAA=="
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <a href="index.html" class="logo">MY STORE</a>
+
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search..." />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="icons">
+          <a href="wishlist.html" class="nav-icon">
+            <i class="fa-solid fa-heart"></i>
+            <span id="wish-count" class="count-badge">0</span>
+          </a>
+
+          <a href="cart.html" class="nav-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="count-badge">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div
+      id="wishlistContainer"
+      class="grid-container"
+      style="margin-top: 50px"
+    ></div>
+
+    <script src="js/wishlist.js"></script>
+  </body>
+</html>
