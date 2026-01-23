@@ -4,10 +4,7 @@ var loginForm = document.getElementById("loginForm");
 // Get the email and password input fields
 var emailTxt = document.getElementById("email");
 var passwordTxt = document.getElementById("password");
-// console.log(emailTxt);
 var data = JSON.parse(localStorage.getItem("users"));
-console.log(data[0].email);
-console.log(data[0].password);
 
 //  Get error display elements
 var passwordError = document.getElementById("passwordError");
@@ -82,19 +79,6 @@ function checkRegularUser() {
   }
 }
 
-function ValidateEmail(email) {
-  // Simplified Gmail pattern
-  // Requirements: characters + @gmail.com
-  return /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email);
-}
-
-function PasswordValidation(password) {
-  // Your requested strong pattern
-  var passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
-  return passwordRegex.test(password);
-}
-
 // Dynamic Email
 ["input", "blur"].forEach((event) => {
   emailTxt.addEventListener(event, function () {
@@ -120,19 +104,3 @@ function PasswordValidation(password) {
     );
   });
 });
-
-function updateStatus(inputEl, errorEl, isValid, errorMsg) {
-  if (inputEl.value === "") {
-    errorEl.innerHTML = "this field is required";
-    inputEl.style.borderColor = "red";
-    errorEl.style.color = "red";
-  } else if (isValid) {
-    errorEl.innerHTML = "Valid";
-    errorEl.style.color = "green";
-    inputEl.style.borderColor = "green";
-  } else {
-    errorEl.innerHTML = errorMsg;
-    errorEl.style.color = "red";
-    inputEl.style.borderColor = "red";
-  }
-}
