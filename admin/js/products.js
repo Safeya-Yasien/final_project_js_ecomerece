@@ -13,6 +13,8 @@ const productPrice = document.getElementById("price");
 const productStock = document.getElementById("stock");
 const productCategory = document.getElementById("category");
 const productDescription = document.getElementById("description");
+const productImage = document.getElementById("image");
+
 let mode = "add";
 let updatedProductId;
 
@@ -43,7 +45,8 @@ function addProduct() {
     productPrice.value.trim() &&
     productStock.value.trim() &&
     productCategory.value.trim() &&
-    productDescription.value.trim()
+    productDescription.value.trim() &&
+    productImage.value.trim()
   ) {
     let products = JSON.parse(localStorage.getItem("products")) || [];
     products.push({
@@ -52,7 +55,8 @@ function addProduct() {
       price: productPrice.value,
       stock: productStock.value,
       category: productCategory.value,
-      description: productDescription,
+      description: productDescription.value,
+      image: productImage.value,
     });
 
     localStorage.setItem("products", JSON.stringify(products));
@@ -125,6 +129,7 @@ function editProduct(id) {
   productStock.value = product.stock;
   productCategory.value = product.category;
   productDescription.value = product.description;
+  productImage.value = product.image;
 
   updatedProductId = product.id;
 }
@@ -137,7 +142,8 @@ function updateProduct() {
     productPrice.value.trim() &&
     productStock.value.trim() &&
     productCategory.value.trim() &&
-    productDescription.value.trim()
+    productDescription.value.trim() &&
+    productImage.value.trim()
   ) {
     products[updatedProductId - 1] = {
       id: updatedProductId,
@@ -146,6 +152,7 @@ function updateProduct() {
       stock: productStock.value,
       category: productCategory.value,
       description: productDescription.value,
+      image: productImage.value,
     };
 
     localStorage.setItem("products", JSON.stringify(products));
