@@ -62,3 +62,10 @@ Ecomerece is a full-featured web application that allows users to browse product
 - Add secure authentication with hashed passwords and sessions.
 - Implement payment integration.
 - Enhance UI/UX design and responsive layout.
+
+
+## for admin 
+username <br/>
+Admin@gmail.com <br/>
+password <br/>
+Admin@123 <br/>
