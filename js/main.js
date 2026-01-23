@@ -37,7 +37,7 @@ function displayProducts(data) {
                 </div>
                 <div class="info">
                     <h3>${product.name}</h3>
-                    <p class="price">${product.price} ج.م</p>
+                    <p class="price">${product.price}$</p>
                 </div>
             </div>
         `;
