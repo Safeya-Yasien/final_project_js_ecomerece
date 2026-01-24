@@ -70,19 +70,25 @@ Admin@gmail.com <br/>
 password <br/>
 Admin@123 <br/>
 
+<!-- test user -->
+
+test@gmail.com
+test2@gmail.com
+<br/>
+
 <!-- test product -->
 
-Men T-Shirt
+Women Dress
 <br/>
-25
+250
 <br/>
-50
+2
 <br/>
-Men
+Women
 <br/>
-Comfortable cotton t-shirt
+Elegant evening dress
 <br/>
-men-1
+women-4
 <br/>
 
 <!-- test category -->
