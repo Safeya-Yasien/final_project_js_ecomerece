@@ -1,0 +1,105 @@
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-pending {
+  background-color: #fff3e0;
+  color: #ff9f1c; /* orange */
+}
+.status-confirmed {
+  background-color: #e0f2f1;
+  color: var(--tertiary-color); /* green */
+}
+.status-rejected {
+  background-color: #ffebee;
+  color: #dc2626; /* red */
+}
+
+/* Table action buttons */
+.action-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 2px;
+  transition: all 0.3s ease;
+}
+
+.btn-confirm {
+  background-color: var(--tertiary-color);
+  color: #fff;
+}
+
+.btn-confirm:hover {
+  background-color: #15803d;
+}
+
+.btn-reject {
+  background-color: #dc2626;
+  color: #fff;
+}
+
+.btn-reject:hover {
+  background-color: #b91c1c;
+}
+
+.btn-delete {
+  background-color: #f1f3f5;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+.btn-delete:hover {
+  background-color: #6b7280;
+  color: #fff;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  th,
+  td {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+  .action-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}

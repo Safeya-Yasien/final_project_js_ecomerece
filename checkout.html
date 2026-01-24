@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart</title>
+    <title>Checkout</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/cart.css" />
+    <link rel="stylesheet" href="css/checkout.css" />
   </head>
 
   <body>
@@ -36,17 +36,41 @@
       </div>
     </header>
 
-    <div id="content">
-      <input type="button" value="clear" onclick="deleteAll()" /><br />
-      <div id="cart-items" class="cart-items"></div>
-      <div id="cart-summary" class="cart-summary hidden">
-        <h3>Total: $<span id="cart-total">0</span></h3>
-        <button class="checkout-btn" onclick="goToCheckout()">Checkout</button>
-      </div>
-    </div>
+    <main class="checkout">
+      <h1>Checkout</h1>
+
+      <section class="order-summary">
+        <h2>Order Summary</h2>
+        <div id="order-items"></div>
+        <div class="total">
+          <span>Total</span>
+          <strong>$<span id="order-total">0</span></strong>
+        </div>
+      </section>
+
+      <section class="customer-info">
+        <h2>Shipping Information</h2>
+        <input type="text" id="name" placeholder="Full Name" />
+        <input type="email" id="email" placeholder="Email" />
+        <input type="text" id="phone" placeholder="Phone" />
+        <textarea id="address" placeholder="Address"></textarea>
+      </section>
+
+      <section class="payment">
+        <h2>Payment Method</h2>
+        <label>
+          <input type="radio" checked />
+          Cash on Delivery
+        </label>
+      </section>
+
+      <button class="place-order-btn" onclick="placeOrder()">
+        Place Order
+      </button>
+    </main>
 
     <script src="js/userAuth.js"></script>
-    <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
   </body>
 </html>

@@ -24,6 +24,7 @@ body {
   background-color: #f1f5f9;
   color: var(--nonary-color);
   position: relative;
+  overflow: hidden;
 }
 
 ul {
@@ -133,6 +134,8 @@ ul {
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
 }
 
 /* Total Summary */
@@ -331,7 +334,6 @@ td:last-child {
   gap: 8px;
 }
 
-/* Table Wrapper */
 table {
   width: 100%;
   border-collapse: collapse;

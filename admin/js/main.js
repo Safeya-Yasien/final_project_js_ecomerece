@@ -1,22 +1,25 @@
 const productsCount = document.getElementById("products-count");
 const categoriesCount = document.getElementById("categories-count");
 const ordersCount = document.getElementById("orders-count");
+const pendingOrdersCount = document.getElementById("pending-orders-count");
+const totalRevenueCount = document.getElementById("total-revenue-count");
 
-function displayProductsLength() {
+function updateDashboard() {
   const products = JSON.parse(localStorage.getItem("products")) || [];
-  productsCount.innerHTML = products.length;
-}
-
-function displayCategoriesLength() {
   const categories = JSON.parse(localStorage.getItem("categories")) || [];
-  categoriesCount.innerHTML = categories.length;
-}
-
-function displayOrdersLength() {
   const orders = JSON.parse(localStorage.getItem("orders")) || [];
-  ordersCount.innerHTML = orders.length;
+
+  productsCount.innerText = products.length;
+  categoriesCount.innerText = categories.length;
+  ordersCount.innerText = orders.length;
+
+  const pendingOrders = orders.filter((o) => o.status === "pending").length;
+  pendingOrdersCount.innerText = pendingOrders;
+
+  const revenue = orders
+    .filter((o) => o.status === "confirmed")
+    .reduce((sum, o) => sum + parseFloat(o.totalPrice), 0);
+  totalRevenueCount.innerText = `$${revenue.toFixed(2)}`;
 }
 
-displayProductsLength();
-displayCategoriesLength();
-displayOrdersLength();
+updateDashboard();

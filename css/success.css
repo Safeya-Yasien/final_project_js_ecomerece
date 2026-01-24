@@ -1,0 +1,80 @@
+.success-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-light);
+  padding: 20px;
+}
+
+.success-card {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.success-card .icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 36px;
+}
+
+.success-card h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.success-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn.primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: #fff;
+}
+
+.btn.secondary {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}

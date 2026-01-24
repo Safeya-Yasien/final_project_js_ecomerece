@@ -169,7 +169,7 @@ const defaultCategories = [
 function initCategories() {
   const categories = JSON.parse(localStorage.getItem("categories"));
 
-  if (!products || products.length === 0) {
+  if (!categories || categories.length === 0) {
     localStorage.setItem("categories", JSON.stringify(defaultCategories));
   }
 }
