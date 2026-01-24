@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/cart.css" />
   </head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
-  <link rel="stylesheet" href="css/main.css" />
+
   <body>
     <header>
       <div class="navbar">
@@ -34,18 +36,13 @@
       </div>
     </header>
 
-    <div class="categories">
-      <button class="cat-btn" onclick="filterProducts('all')">All</button>
-      <button class="cat-btn" onclick="filterProducts('men')">Men</button>
-      <button class="cat-btn" onclick="filterProducts('women')">Women</button>
-      <button class="cat-btn" onclick="filterProducts('children')">
-        Children
-      </button>
+    <div id="content">
+      <input type="button" value="clear" onclick="deleteAll()" /><br />
+      <div id="cart-items" class="cart-items"></div>
     </div>
 
-    <div id="productContainer" class="grid-container"></div>
-
-    <script src="js/main.js"></script>
     <script src="js/userAuth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

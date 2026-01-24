@@ -44,31 +44,15 @@ Ecomerece is a full-featured web application that allows users to browse product
 
 ---
 
-## Folder Structure
-
-final_project_js_ecomerece/
-├─ admin/
-│ └─ index.html # Admin dashboard
-├─ js/
-│ └─ adminData.json # Sample admin data
-├─ css/
-│ └─ style.css
-├─ index.html # Main website homepage
-└─ login.html # User login page
-
----
-
----
-
 ## Team
 
-| Name            | Role / Contribution                                                                                    | GitHub                                            |
-| --------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| Asalla Eliwa    | Implemented user registration, login, and validation logic; worked on product listing pages            | [Asalla-Eliwa](https://github.com/Asalla-eliwa)   |
-| Safeya Yasien   | Built the admin dashboard, CRUD operations for products and categories, and order status updates       | [Safeya-Yasien](https://github.com/Safeya-Yasien) |
-| Fatma Al-Zahraa | Designed UI/UX for main website and admin dashboard; styled pages with CSS and improved responsiveness | [Fatma-Al-Zahraa](https://github.com/carolgithub) |
-| zainab          | Designed UI/UX for main website and admin dashboard; styled pages with CSS and improved responsiveness | [Fatma-Al-Zahraa](https://github.com/Zain5689)    |
-| Tasneem         | Integrated cart functionality, checkout flow, and localStorage handling for user sessions              | [davidgithub](https://github.com/davidgithub)     |
+| Name            | Role / Contribution                                                                                    | GitHub                                                            |
+| --------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| Asalla Eliwa    | Implemented user registration, login, and validation logic; worked on product listing pages            | [Asalla-Eliwa](https://github.com/Asalla-eliwa)                   |
+| Safeya Yasien   | Built the admin dashboard, CRUD operations for products and categories, and order status updates       | [Safeya-Yasien](https://github.com/Safeya-Yasien)                 |
+| Fatma Al-Zahraa | Designed UI/UX for main website and admin dashboard; styled pages with CSS and improved responsiveness | [Fatma-al-zahraa-tarek](https://github.com/Fatma-al-zahraa-tarek) |
+| zainab          | Designed UI/UX for main website and admin dashboard; styled pages with CSS and improved responsiveness | [Fatma-Al-Zahraa](https://github.com/Zain5689)                    |
+| Tasneem         | Integrated cart functionality, checkout flow, and localStorage handling for user sessions              | [davidgithub](https://github.com/davidgithub)                     |
 
 ---
 
@@ -78,3 +62,54 @@ final_project_js_ecomerece/
 - Add secure authentication with hashed passwords and sessions.
 - Implement payment integration.
 - Enhance UI/UX design and responsive layout.
+
+## for admin
+
+username <br/>
+Admin@gmail.com <br/>
+password <br/>
+Admin@123 <br/>
+
+###### Fatma Al-Zahraa
+
+    - index.html "home" page
+    - display all products
+    - add to cart
+    - add to wishlist
+    - display wishlist
+    - update counters
+    - filter products by category
+    - search products
+
+    What i change?
+    "main.js" file
+        - instead of array of products i use localStorage to get products which admin add
+        - i add default image path start with "images/" folder then img name which i add in admin as image name and fixed extension of img to all 'webp'
+        - there was a duplicate in wishlist.js i remove it and add new one for both add and remove wishlist called 'toggleWishlist'
+        - i add two functions 'getProducts' and 'getCategories' to get products and categories from localStorage in 'main.js'
+        - add trim with toLowerCase to filter products by category to avoid case sensitive
+        - when add product to cart they add id of product again not update the quantity  in "addToCart" function
+        -
+
+
+
+    "wishlist.js" file
+        - display data from localStorage instead of array of products
+        - i add default image path start with "images/" folder then img name which i add in admin as image name and fixed extension of img to all 'webp'
+
+###### Tasneem
+
+    - cart.html
+    - cart.js
+    - display cart products
+
+    What i change?
+    "cart.js" file
+        - when remove data from localStorage define the key you want to remove not use 'clear'
+        - get data from localStorage instead of fakestore api
+        - use let and const instead of var
+        - fatama was save id of product in localStorage so i have to get product which id is equal to product id in cart
+        - add updateQty function to update quantity of product in cart.js file
+        - add styles
+        - remove products files because fatama added it actually in home page 'index.html'
+

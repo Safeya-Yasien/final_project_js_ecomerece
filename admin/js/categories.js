@@ -146,3 +146,27 @@ function updateCategory() {
 }
 
 displayCategories();
+
+const defaultCategories = [
+  {
+    id: 1,
+    name: "Men",
+    status: "Active",
+    description: "Products for men",
+  },
+  {
+    id: 2,
+    name: "Women",
+    status: "Active",
+    description: "Products for women",
+  },
+  {
+    id: 3,
+    name: "Children",
+    status: "Active",
+    description: "Products for children",
+  },
+];
+
+// Save to localStorage
+localStorage.setItem("categories", JSON.stringify(defaultCategories));

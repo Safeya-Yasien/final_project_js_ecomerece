@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm-Reject Page</title>
+    <link rel="stylesheet" href="CSS/orderManagementStyle.css">
+</head>
+<body>
+   
+    <div class="dashboard-summary">
+            <div class="card total">
+                <h3>Total Orders</h3>
+                <span id="total-orders" class="value">0</span>
+            </div>
+            <div class="card pending">
+                <h3>Pending Orders</h3>
+                <span id="pending-orders" class="value">0</span>
+            </div>
+            <div class="card revenue">
+                <h3>Total Revenue</h3>
+                <span id="total-revenue" class="value">0</span>
+            </div>
+    </div>
+   <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="orders-list">
+            </tbody>
+    </table>
+</div>
+<div id="pagination-controls" class="pagination-container"></div>
+    <script src="JS/database.js"></script>
+    <script src="JS/orderManagement.js"></script>
+</body>
+</html>

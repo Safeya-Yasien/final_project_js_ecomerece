@@ -1,15 +1,19 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>WishList</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <link
+      rel="icon"
+      href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAAAAMClwaDAAAAA=="
+    />
   </head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
-  <link rel="stylesheet" href="css/main.css" />
   <body>
     <header>
       <div class="navbar">
@@ -34,18 +38,13 @@
       </div>
     </header>
 
-    <div class="categories">
-      <button class="cat-btn" onclick="filterProducts('all')">All</button>
-      <button class="cat-btn" onclick="filterProducts('men')">Men</button>
-      <button class="cat-btn" onclick="filterProducts('women')">Women</button>
-      <button class="cat-btn" onclick="filterProducts('children')">
-        Children
-      </button>
-    </div>
+    <div
+      id="wishlistContainer"
+      class="grid-container"
+      style="margin-top: 50px"
+    ></div>
 
-    <div id="productContainer" class="grid-container"></div>
-
-    <script src="js/main.js"></script>
     <script src="js/userAuth.js"></script>
+    <script src="js/wishlist.js"></script>
   </body>
 </html>
