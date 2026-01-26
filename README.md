@@ -48,13 +48,13 @@ Ecomerece is a full-featured web application that allows users to browse product
 
 ## Team
 
-| Name            | Role / Contribution                                                                                    | GitHub                                                            |
-| --------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| Asalla Eliwa    | Implemented user registration, login, and validation logic; worked on product listing pages            | [Asalla-Eliwa](https://github.com/Asalla-eliwa)                   |
-| Safeya Yasien   | Built the admin dashboard, CRUD operations for products and categories, and order status updates       | [Safeya-Yasien](https://github.com/Safeya-Yasien)                 |
-| Fatma Al-Zahraa | Designed UI/UX for main website and admin dashboard; styled pages with CSS and improved responsiveness | [Fatma-al-zahraa-tarek](https://github.com/Fatma-al-zahraa-tarek) |
-| zainab          | Designed UI/UX for main website and admin dashboard; styled pages with CSS and improved responsiveness | [Fatma-Al-Zahraa](https://github.com/Zain5689)                    |
-| Tasneem         | Integrated cart functionality, checkout flow, and localStorage handling for user sessions              | [davidgithub](https://github.com/davidgithub)                     |
+| Name            | Role / Contribution                                                                              | GitHub                                                            |
+| --------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| Asalla Eliwa    | styled pages with CSS and improved responsiveness, worked on orders page                         | [Asalla-Eliwa](https://github.com/Asalla-eliwa)                   |
+| Safeya Yasien   | Built the admin dashboard, CRUD operations for products and categories, and order status updates | [Safeya-Yasien](https://github.com/Safeya-Yasien)                 |
+| Fatma Al-Zahraa | worked on product listing pages and add to cart functionality                                    | [Fatma-al-zahraa-tarek](https://github.com/Fatma-al-zahraa-tarek) |
+| Zainab Helal    | Implemented user registration, login, and validation logic;                                      | [Fatma-Al-Zahraa](https://github.com/Zain5689)                    |
+| Tasneem Khaled  | Integrated cart functionality, checkout flow, and place orders for user                          | [davidgithub](https://github.com/davidgithub)                     |
 
 ---
 

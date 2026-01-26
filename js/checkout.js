@@ -37,6 +37,13 @@ function loadCheckout() {
 }
 
 function placeOrder() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+  if (!currentUser) {
+    alert("Please login first");
+    window.location.href = "login.html";
+    return;
+  }
+
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const phone = document.getElementById("phone").value.trim();
@@ -52,11 +59,12 @@ function placeOrder() {
 
   orders.push({
     id: Date.now(),
+    userEmail: currentUser.email,
     customer: { name, email, phone, address },
     items: cart,
-    total: document.getElementById("order-total").innerText,
+    total: Number(document.getElementById("order-total").innerText),
     date: new Date().toISOString(),
-    status: "Pending",
+    status: "pending",
   });
 
   localStorage.setItem("orders", JSON.stringify(orders));

@@ -67,6 +67,15 @@ function checkRegularUser() {
     );
     if (foundUser) {
       localStorage.setItem("isLoggedIn", "true");
+
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          username: foundUser.username,
+          email: foundUser.email,
+        }),
+      );
+
       window.location.href = "index.html";
     } else {
       document.getElementById("errormessage").innerText =
