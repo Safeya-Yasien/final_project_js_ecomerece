@@ -35,6 +35,7 @@ function loadMyOrders() {
         <td>${itemsCount}</td>
         <td>$${total.toFixed(2)}</td>
         <td data-status="${order.status}">${order.status}</td>
+        <td>${order.status === "rejected" ? order.rejectReason : ""}</td>
         <td>${new Date(order.date).toLocaleDateString()}</td>
         <td>
           <button class="details-btn" onclick="toggleDetails(${index})">
