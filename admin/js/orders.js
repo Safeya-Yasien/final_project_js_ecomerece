@@ -105,7 +105,7 @@ function handleReject(orderId) {
     let orders = JSON.parse(localStorage.getItem('orders'));
     let order = orders.find(o => o.id === orderId);
 
-    if (order.status !== 'pending') {
+    if (order.status.toLowerCase() !== 'pending') {
         alert("لا يمكن رفض طلب غير معلق (تم تأكيده أو رفضه بالفعل)");
         return;
     }
