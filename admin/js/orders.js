@@ -17,6 +17,9 @@ function displayOrders() {
   tbody.innerHTML = "";
 
   for (let element of paginatedOrders) {
+    let reasonText = (element.status === 'rejected' && element.rejectReason) 
+                 ? `<br><small style="color:red">السبب: ${element.rejectReason}</small>` 
+                 : '';
     let customerName =
       typeof element.customer === "object"
         ? element.customer.name
@@ -37,6 +40,10 @@ function displayOrders() {
                 <td>${quantity}</td>
                 <td>${totalPrice.toFixed(2)} $</td>
                 <td><span class="status ${statusClass}">${status}</span></td>
+                <td>
+                    <span class="status ${statusClass}">${element.status}</span>
+                    ${reasonText}
+                </td>
                 <td>
                   <button class="action-btn btn-confirm" ${isNotPending} onclick="handleConfirm('${element.id}')">Confirm</button>
                     <button class="action-btn btn-reject" ${isNotPending} onclick="handleReject('${element.id}')">Reject</button>
@@ -95,23 +102,32 @@ function handleConfirm(orderId) {
 }
 
 function handleReject(orderId) {
-  orderId = Number(orderId);
-  let orders = JSON.parse(localStorage.getItem("orders"));
-  let order = orders.find((o) => o.id === orderId);
-  if (
-    order.status.toLowerCase() !== "pending" &&
-    order.status === "confirmed"
-  ) {
-    alert("sorry had been confirmed");
-    return;
-  }
-  if (order) {
-    order.status = "rejected";
-    localStorage.setItem("orders", JSON.stringify(orders));
-    displayOrders();
-    alert("Order has been rejected.");
-  }
-  updateDashboard();
+    let orders = JSON.parse(localStorage.getItem('orders'));
+    let order = orders.find(o => o.id === orderId);
+
+    if (order.status !== 'pending') {
+        alert("لا يمكن رفض طلب غير معلق (تم تأكيده أو رفضه بالفعل)");
+        return;
+    }
+
+    if (order) {
+        let reason = prompt("يرجى إدخال سبب الرفض للعميل:");
+
+        if (reason === null) return; 
+        
+        if (reason.trim() === "") {
+            alert("يجب كتابة سبب الرفض لإتمام العملية");
+            return;
+        }
+
+        order.status = "rejected";
+        order.rejectReason = reason; 
+
+        localStorage.setItem('orders', JSON.stringify(orders));
+        displayOrders();
+        alert("تم رفض الطلب وحفظ السبب بنجاح.");
+        updateDashboard();
+    }
 }
 
 function handleDelete(orderId) {
